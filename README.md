@@ -10,10 +10,12 @@ docker run -d --name postgres-task-tracker \
   -e POSTGRES_DB=task_tracker \
   -p 5432:5432 postgres:16
 ```
-```# 2. Установи зависимости
+```
+# 2. Установи зависимости
 pip install -r requirements.txt
 ```
-```# 3. Запусти API
+```
+# 3. Запусти API
 uvicorn app.main:app --reload
 Swagger UI: http://localhost:8000/docs
 ReDoc: http://localhost:8000/redoc
