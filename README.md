@@ -1,7 +1,6 @@
 Task Tracker API 📝
 Production-ready REST API для управления задачами на FastAPI + PostgreSQL с JWT аутентификацией
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web## 🚀 Быстрый старт
 
 ```bash
 # 1. Запусти PostgreSQL
@@ -13,13 +12,12 @@ docker run -d --name postgres-task-tracker \
 ```
 ```# 2. Установи зависимости
 pip install -r requirements.txt
-
-# 3. Запусти API
-uvicorn app.main:app --reload
 ```
+```# 3. Запусти API
+uvicorn app.main:app --reload
 Swagger UI: http://localhost:8000/docs
 ReDoc: http://localhost:8000/redoc
-
+```
 📋 API Эндпоинты
 Аутентификация
 ```text
