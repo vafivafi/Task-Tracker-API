@@ -28,7 +28,7 @@ POST /api/v1/auth/login       # Логин → JWT токен
 ```
 Задачи
 ```
-GET    /api/v1/tasks/          # Список (?status=todo&priority=high&search=bug&limit=50)
+GET    /api/v1/tasks/          # Список (все задачи)
 POST   /api/v1/tasks/          # Создать задачу
 GET    /api/v1/tasks/{id}      # Получить задачу
 PUT    /api/v1/tasks/{id}      # Обновить
