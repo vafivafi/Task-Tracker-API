@@ -24,4 +24,5 @@ class Config:
 class Base(DeclarativeBase):
     pass
 
+
 config = Config()
