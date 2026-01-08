@@ -36,29 +36,29 @@ DELETE /api/v1/tasks/{id}      # Удалить
 ```
 🏗️ Чистая архитектура
 ```
-task_tracker/
-├── app/
-│   ├── main.py              # FastAPI приложение
-│   ├── database.py          # PostgreSQL подключение
-│   ├── core/
-│   │   ├── config.py        # Настройки
-│   │   └── security.py      # JWT + хэши паролей
-│   ├── models/
-│   │   ├── user.py         # Пользователи
-│   │   └── task.py         # Задачи (owner_id)
-│   ├── schemas/
-│   │   ├── user.py         # UserCreate, Token
-│   │   └── task.py         # TaskCreate, TaskResponse
-│   ├── crud/
-│   │   ├── user.py         # create_user, get_user_by_email
-│   │   └── task.py         # CRUD + фильтры + поиск
-│   └── api/
-│       ├── deps.py         # get_current_user, get_db
-│       └── v1/
-│           ├── auth.py     # /auth/register, /auth/login
-│           └── tasks.py    # CRUD задач
-├── requirements.txt
-└── .env                   
+app/
+├── api/
+│   ├── v1/
+│   │   ├── auth.py
+│   │   └── tasks.py
+│   └── deps.py
+├── core/
+│   ├── config.py
+│   └── security.py
+├── crud/
+│   ├── task.py
+│   └── user.py
+├── loger/
+│   └── log.py
+├── models/
+│   ├── task.py
+│   └── user.py
+├── schemas/
+│   ├── task.py
+│   └── user.py
+├── main.py
+└── settings.py
+
 ```
 🛠 Технологии
 FastAPI — высокопроизводительный API
