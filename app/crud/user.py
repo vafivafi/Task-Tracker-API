@@ -20,7 +20,10 @@ class Secure:
             return None
 
     @staticmethod
-    def verify_password(stored_hash: str, password: str) -> bool:
+    def verify_password(
+        stored_hash: str, 
+        password: str
+    ) -> bool:
         try:    
             if PasswordService.verify(stored_hash, password):
                 logger.info("Пароль совпадает")
@@ -34,10 +37,16 @@ class Secure:
 
 class Usercrud:
     @staticmethod
-    async def register_user(session: AsyncSession, user: UserSchema):
+    async def register_user(
+        session: AsyncSession, 
+        user: UserSchema
+    ):
         password_hashed = Secure.password_hash(user.password)
         if password_hashed is None:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Ошибка при обработке пароля")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, 
+                detail="Ошибка при обработке пароля"
+            )
         new_user = UsersOrm(
             username = user.username,
             password = password_hashed,    
@@ -58,7 +67,10 @@ class Usercrud:
         except Exception as e:
             await session.rollback()
             logger.error(f"Ошибка при записи пользователя {e}")
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Пользователь с таким именем уже существует")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST, 
+                detail="Пользователь с таким именем уже существует"
+            )
 
     @staticmethod
     async def validation_user(session: AsyncSession, user: UserSchema):
@@ -68,7 +80,10 @@ class Usercrud:
 
         if user_valid is None:
             logger.warning(f"Пользователь не найден")
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Неверное имя пользователя или пароль")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, 
+                detail="Неверное имя пользователя или пароль"
+            )
 
         if Secure.verify_password(user_valid.password, user.password):
             token = authx_service.create_access_token(uid=str(user_valid.id))
@@ -81,7 +96,10 @@ class Usercrud:
             }
         else:
             logger.warning(f"Пользователь не найден")
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Неверное имя пользователя или пароль")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, 
+                detail="Неверное имя пользователя или пароль"
+            )
 
 
 

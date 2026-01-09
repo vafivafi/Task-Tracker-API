@@ -13,7 +13,7 @@ task_router = APIRouter(
 
 @task_router.post(
     "/",
-    description = "Добавить задачу",
+    summary = "Добавить задачу",
     status_code = status.HTTP_201_CREATED,  
 )
 async def add_tasks(
@@ -36,7 +36,7 @@ async def add_tasks(
 
 @task_router.get(
     "/",
-    description = "Получить все задачи",
+    summary = "Получить все задачи",
 )
 async def get_all_tasks(
     session: SessionDep,
@@ -59,7 +59,7 @@ async def get_all_tasks(
 
 @task_router.get(
     "/{id}",
-    description = "Найти задачу по айди",
+    summary = "Найти задачу по айди",
 )
 async def get_one_tasks(
     session: SessionDep,
@@ -79,7 +79,7 @@ async def get_one_tasks(
 
 @task_router.put(
     "/{id}",
-    description = "Обновить задачу по айди"
+    summary = "Обновить задачу по айди"
 )
 async def put_tasks(
     id: int,
@@ -102,7 +102,7 @@ async def put_tasks(
 
 @task_router.delete(
     "/{id}",
-    description = "Удалить задачу по айди"
+    summary = "Удалить задачу по айди"
 )
 async def delete_task(
     id: int,

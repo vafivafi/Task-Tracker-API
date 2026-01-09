@@ -20,7 +20,10 @@ async def register(
     session: SessionDep
 ):
 
-    return await Usercrud.register_user(session = session, user = user_data)
+    return await Usercrud.register_user(
+        session = session, 
+        user = user_data
+    )
 
 @auth_router.post(
     "/login",
@@ -30,4 +33,7 @@ async def login(
     user_data: UserSchema,
     session: SessionDep
 ):
-    return await Usercrud.validation_user(session=session, user=user_data)
+    return await Usercrud.validation_user(
+        session=session,
+        user=user_data
+    )
